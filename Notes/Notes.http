@@ -1,7 +1,7 @@
 # Sample requests for each endpoint of the API
 
 # connection settings
-@hostAddress=https://localhost:7082/api
+@hostAddress=https://localhost:7082/api/v1
 
 ### get a loist of all notes
 GET {{hostAddress}}/notes

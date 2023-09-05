@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using NotesDataAccess.Data;
 using NotesDataAccess.Models;
 
@@ -10,11 +11,25 @@ namespace Notes.Controllers
     [ApiController]
     public class NotesController : ControllerBase
     {
+        private readonly INoteData _noteData;
+
+        public NotesController(INoteData noteData)
+        {
+            _noteData = noteData;
+        }
+
         // GET: api/<NotesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<Results<Ok<IEnumerable<NoteModel>>, ProblemHttpResult>> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                return TypedResults.Ok(await _noteData.GetAllAsync());
+            }
+            catch (Exception)
+            {
+                return TypedResults.Problem("Internal Error");
+            }
         }
 
         // GET api/<NotesController>/5
