@@ -20,11 +20,12 @@ namespace Notes.Controllers
 
         // GET: api/<NotesController>
         [HttpGet]
-        public async Task<Results<Ok<IEnumerable<NoteModel>>, ProblemHttpResult>> Get()
+        public async Task<Results<NotFound, Ok<IEnumerable<NoteModel>>, ProblemHttpResult>> Get()
         {
             try
             {
-                return TypedResults.Ok(await _noteData.GetAllAsync());
+                var result = await _noteData.GetAllAsync();
+                return result == null ? TypedResults.NotFound() : TypedResults.Ok(result);
             }
             catch (Exception)
             {
