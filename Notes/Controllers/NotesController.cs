@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NotesDataAccess.Data;
 using NotesDataAccess.Models;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System.Net.Mime;
 
 namespace Notes.Controllers
 {
@@ -20,6 +19,9 @@ namespace Notes.Controllers
 
         // GET: api/<NotesController>
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<NoteModel>), 200)]
+        [ProducesResponseType(typeof(void), 404)]
+        [ProducesResponseType(typeof(void), 500)]
         public async Task<Results<NotFound, Ok<IEnumerable<NoteModel>>, ProblemHttpResult>> Get()
         {
             try
