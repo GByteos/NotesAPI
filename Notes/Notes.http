@@ -1,0 +1,19 @@
+# Sample requests for each endpoint of the API
+
+# connection settings
+@hostAddress=https://localhost:7082/api
+
+### get a loist of all notes
+GET {{hostAddress}}/notes
+
+### get a note by id
+GET {{hostAddress}}/notes/1
+
+### create a new note
+POST {{hostAddress}}/notes
+
+### update an existin note
+PUT {{hostAddress}}/notes/1
+
+### delete a note
+DELETE {{hostAddress}}/notes/1
