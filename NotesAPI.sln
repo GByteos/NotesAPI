@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes", "Notes\Notes.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesDataAccess", "NotesDataAccess\NotesDataAccess.csproj", "{6E312C77-2035-4599-9557-BAB0E781A4BA}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "NotesDataBase", "NotesDataBase\NotesDataBase.sqlproj", "{D32AA005-63C0-4664-8F89-6D77A36EF5FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{6E312C77-2035-4599-9557-BAB0E781A4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E312C77-2035-4599-9557-BAB0E781A4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E312C77-2035-4599-9557-BAB0E781A4BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32AA005-63C0-4664-8F89-6D77A36EF5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32AA005-63C0-4664-8F89-6D77A36EF5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32AA005-63C0-4664-8F89-6D77A36EF5FE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D32AA005-63C0-4664-8F89-6D77A36EF5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32AA005-63C0-4664-8F89-6D77A36EF5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32AA005-63C0-4664-8F89-6D77A36EF5FE}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
