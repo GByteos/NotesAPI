@@ -57,15 +57,15 @@ namespace Notes.Controllers
         // POST api/<NotesController>
         [HttpPost]
         [Consumes("application/json")]
-        [ProducesResponseType(typeof(NoteModel), 200)]
+        [ProducesResponseType(typeof(NoteModel), 201)]
         [ProducesResponseType(typeof(void), 400)]
         [ProducesResponseType(typeof(void), 500)]
-        public async Task<Results<BadRequest<string>, Ok<NoteModel>, ProblemHttpResult>> Post([FromBody] NoteModel value)
+        public async Task<Results<BadRequest<string>, Created<NoteModel>, ProblemHttpResult>> Post([FromBody] NoteModel value)
         {
             try
             {
                 var result = await _noteData.InsertAsync(value);
-                return result == null ? TypedResults.BadRequest("Validation error") : TypedResults.Ok(result);
+                return result == null ? TypedResults.BadRequest("Validation error") : TypedResults.Created($"api/v1/Notes/{result.Id}",result);
             }
             catch (Exception)
             {
