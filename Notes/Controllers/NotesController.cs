@@ -37,6 +37,7 @@ namespace Notes.Controllers
 
         // GET api/<NotesController>/5
         [HttpGet("{id}")]
+        [Consumes("application/json")]
         [ProducesResponseType(typeof(NoteModel), 200)]
         [ProducesResponseType(typeof(void), 404)]
         [ProducesResponseType(typeof(void), 500)]
@@ -55,20 +56,59 @@ namespace Notes.Controllers
 
         // POST api/<NotesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Consumes("application/json")]
+        [ProducesResponseType(typeof(NoteModel), 200)]
+        [ProducesResponseType(typeof(void), 400)]
+        [ProducesResponseType(typeof(void), 500)]
+        public async Task<Results<BadRequest<string>, Ok<NoteModel>, ProblemHttpResult>> Post([FromBody] NoteModel value)
         {
+            try
+            {
+                var result = await _noteData.InsertAsync(value);
+                return result == null ? TypedResults.BadRequest("Validation error") : TypedResults.Ok(result);
+            }
+            catch (Exception)
+            {
+                return TypedResults.Problem("Internal Error");
+            }
         }
 
         // PUT api/<NotesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut()]
+        [Consumes("application/json")]
+        [ProducesResponseType(typeof(NoteModel), 200)]
+        [ProducesResponseType(typeof(void), 400)]
+        [ProducesResponseType(typeof(void), 500)]
+        public async Task<Results<BadRequest<string>, Ok<NoteModel>, ProblemHttpResult>> Put([FromBody] NoteModel value)
         {
+            try
+            {
+                var result = await _noteData.UpdateAsync(value);
+                return result == null ? TypedResults.BadRequest("Validation error") : TypedResults.Ok(result);
+            }
+            catch (Exception)
+            {
+                return TypedResults.Problem("Internal Error");
+            }
         }
 
         // DELETE api/<NotesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Consumes("application/json")]
+        [ProducesResponseType(typeof(NoteModel), 200)]
+        [ProducesResponseType(typeof(void), 400)]
+        [ProducesResponseType(typeof(void), 500)]
+        public async Task<Results<BadRequest<string>, Ok<NoteModel>, ProblemHttpResult>> Delete(int id)
         {
+            try
+            {
+                var result = await _noteData.DeleteAsync(id);
+                return result == null ? TypedResults.BadRequest("Validation error") : TypedResults.Ok(result);
+            }
+            catch (Exception)
+            {
+                return TypedResults.Problem("Internal Error");
+            }
         }
     }
 }

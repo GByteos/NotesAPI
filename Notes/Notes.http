@@ -1,7 +1,7 @@
 # Sample requests for each endpoint of the API
 
 # connection settings
-@hostAddress=https://localhost:7082/api/v1
+@hostAddress=https://localhost:7212/api/v1
 
 ### get a loist of all notes
 GET {{hostAddress}}/notes
@@ -11,9 +11,25 @@ GET {{hostAddress}}/notes/1
 
 ### create a new note
 POST {{hostAddress}}/notes
+Content-Type: application/json
+
+{
+  "id": "0",
+  "title": "This is my 5th note",
+  "owner": "Daniel",
+  "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+}
 
 ### update an existin note
-PUT {{hostAddress}}/notes/1
+PUT {{hostAddress}}/notes
+Content-Type: application/json
+
+{
+  "id": "1003",
+  "title": "This is my 5th note changed",
+  "owner": "Daniel",
+  "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+}
 
 ### delete a note
-DELETE {{hostAddress}}/notes/1
+DELETE {{hostAddress}}/notes/1002
