@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using NotesDataAccess.DbAccess;
+
 
 namespace NotesDataAccess.DbAccess
-{
-
+{    
     public class SqlDataAccess : ISqlDataAccess
     {
         private readonly IConfiguration _configuration;
