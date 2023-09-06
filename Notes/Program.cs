@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen(options =>
         Description = "This API enables you, to store and edit your notes.",
     });
 
-    // use XML comments
+    // TODO: use XML comments
     //var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
 });

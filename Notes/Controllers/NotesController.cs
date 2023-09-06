@@ -37,9 +37,20 @@ namespace Notes.Controllers
 
         // GET api/<NotesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        [ProducesResponseType(typeof(NoteModel), 200)]
+        [ProducesResponseType(typeof(void), 404)]
+        [ProducesResponseType(typeof(void), 500)]
+        public async Task<Results<NotFound, Ok<NoteModel>, ProblemHttpResult>> Get(int id)
         {
-            return "value";
+            try
+            {
+                var result = await _noteData.GetAsync(id);
+                return result == null ? TypedResults.NotFound() : TypedResults.Ok(result);
+            }
+            catch (Exception)
+            {
+                return TypedResults.Problem("Internal Error");
+            }
         }
 
         // POST api/<NotesController>
